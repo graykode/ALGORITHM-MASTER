@@ -43,5 +43,5 @@ int main() {
 			}
 		}
 	}
-	cout << d[end];
+	cout << d[end]; 
 }
