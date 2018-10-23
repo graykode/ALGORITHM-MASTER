@@ -36,7 +36,7 @@ int main() {
 						flag = true;
 						d[next] = d[v] + weight;
 						if (loop == n)
-							negative = true;
+							negative = true; 
 					}
 				}
 			}
