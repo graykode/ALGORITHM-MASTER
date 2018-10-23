@@ -35,7 +35,7 @@ int main() {
 				minimum = d[i];
 				index = i;
 			}
-		}
+		} 
 		visited[index] = true;
 		for (int i = 1; i <= n; i++) {
 			if (d[i] > d[index] + a[index][i]) {
