@@ -24,3 +24,4 @@ int main() {
 		cout << dq.front().value << " ";
 	}
 }
+ 
