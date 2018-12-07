@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+map<int, int> m;
+bool check(int num) {
+	for (int i = 1; i <= 100000; i = i << 1) {
+		if (num == i) return true;
+	}
+	return false;
+}
+int main() {
+	int n, temp; cin >> n;
+	temp = n;
+	for (int i = 2; i <= n; i++) {
+		if (n%i == 0) {
+			while (n%i == 0) {
+				m[i]++;
+				n /= i;
+			}
+		}
+	}
+	int Max = -1;
+	int ans = 1;
+	for (map<int, int>::iterator mi = m.begin(); mi != m.end(); mi++) {
+		Max = max(Max, mi->second);
+		ans *= mi->first;
+	}
+	// is Prime
+	if (ans == temp) {
+		cout << ans << " " << 0;
+		return 0;
+	}
+	int cnt = 1;
+	// all coefficient is 2^n and same;
+	bool same = true;
+	int before = -1;
+	// is all same
+	for (map<int, int>::iterator mi = m.begin(); mi != m.end(); mi++) {
+		if (before == -1) {
+			before = mi->second;
+		}
+		else if (before != mi->second) {
+			same = false;
+			break;
+		}
+	}
+	// is all 2^n
+	for (map<int, int>::iterator mi = m.begin(); mi != m.end(); mi++) {
+		if (!check(mi->second)) {
+			same = false;
+			break;
+		}
+	}
+	if (same) cnt = 0;
+	for (int i = 1;; i = i << 1) {
+		if (Max <= i) {
+			break;
+		}
+		cnt++;
+	}
+	cout <<ans <<" "<< cnt;
+}

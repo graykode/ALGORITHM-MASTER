@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+int s[100001];
+long long p[100001];
+long long mod = 1e9 + 7;
+int cnt(int left, int right) {
+	return s[right] - s[left - 1];
+}
+int main() {
+	int n, q; cin >> n >> q;
+	string a; cin >> a;
+	s[1] = (int)(a[0] - '0');
+	for (int i = 1; i < a.length(); i++) {
+		s[i + 1] = s[i] + (a[i] == '1');
+	}
+	p[0] = 1;
+	for (int i = 1; i <= 100000; i++) {
+		p[i] = p[i - 1] * 2 % mod;
+	}
+	while (q--) {
+		int left, right;
+		cin >> left >> right;
+		int one = cnt(left, right);
+		int zero = right - left + 1 - one;
+		cout << ((p[one] - 1) * p[zero])% mod << "\n";
+	}
+}
