@@ -16,3 +16,4 @@ int main(){
 	for(int i=1; i<=n; i++) cin >> a[i];
 	cout << go(n,0);
 }
+ 
